@@ -1,9 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.UI;
-
 
 public class RandomNames
 {
@@ -844,12 +841,18 @@ public class RandomNames
     private readonly int possible = adjectives.Length * surnames.Length;
   
     public RandomNames(){}
-    public string GetRandomName(string separator ="_")
+    public string GetRandomName(string separator ="_", bool capitalize=true)
     {
         // get_random_name generates a random name from the list of adjectives and surnames in this package formatted as "adjective{separator}surname"
         
         string adjective = adjectives[rng.Next(adjectives.Length)];
         string surname = surnames[rng.Next(surnames.Length)];
+
+        if(capitalize)
+        {
+            adjective = string.Concat(adjective[0].ToString().ToUpper(), adjective[1..]);
+            surname = string.Concat(surname[0].ToString().ToUpper(), surname[1..]);
+        }
 
         return string.Format("{0}{1}{2}", adjective, separator, surname);
     }
