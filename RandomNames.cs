@@ -851,7 +851,7 @@ public class RandomNames
         string adjective = adjectives[rng.Next(adjectives.Length)];
         string surname = surnames[rng.Next(surnames.Length)];
 
-        return string.Format("%s%s%s", adjective, separator, surname);
+        return string.Format("{0}{1}{2}", adjective, separator, surname);
     }
 
     
